@@ -11,6 +11,6 @@
     <title>修改用户信息失败</title>
 </head>
 <body>
-    尊敬的<%=session.getAttribute("userName")%>，您的信息修改失败，<a href="update.jsp">点此跳转修改界面</a>
+尊敬的<%=session.getAttribute("userName")%>，您的信息修改失败，<a href="update.jsp">点此跳转修改界面</a>
 </body>
 </html>

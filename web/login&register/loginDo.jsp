@@ -19,22 +19,20 @@
     String pwd = request.getParameter("pwd");
 
     Class.forName("com.mysql.jdbc.Driver");
-    String url="jdbc:mysql://localhost:3306/bs_login";
-    String user="root";
-    String password="guo2086443";
-    Connection con= DriverManager.getConnection(url,user,password);
+    String url = "jdbc:mysql://localhost:3306/bs_login";
+    String user = "root";
+    String password = "guo2086443";
+    Connection con = DriverManager.getConnection(url, user, password);
 
-    Statement stmt=con.createStatement();
-    String sql="select * from login";
-    ResultSet rs=stmt.executeQuery(sql);
-    int flag=0;
+    Statement stmt = con.createStatement();
+    String sql = "select * from login";
+    ResultSet rs = stmt.executeQuery(sql);
+    int flag = 0;
 
     //连接sql
-    while(rs.next())
-    {
-        if(name.equals(rs.getString("userName"))&&pwd.equals(rs.getString("Password")))
-        {
-            flag=1;
+    while (rs.next()) {
+        if (name.equals(rs.getString("userName")) && pwd.equals(rs.getString("Password"))) {
+            flag = 1;
             session.setAttribute("userName", name);
             String strNum = (String) application.getAttribute("count");
             int num = 0;
@@ -43,16 +41,18 @@
             }
             num++;
             application.setAttribute("count", String.valueOf(num));
-            if(rs.getInt("ifAdmin")==1)
+            if (rs.getInt("ifAdmin") == 1) {
+                session.setAttribute("au", 1);
                 response.sendRedirect("adminPage.jsp");
-            else
+            } else {
+                session.setAttribute("au", 0);
                 response.sendRedirect("welcome.jsp");
+            }
             break;
         }
     }
 
-    if(flag==0)
-    {
+    if (flag == 0) {
         session.setAttribute("userName", name);
         response.sendRedirect("error.jsp");
     }
