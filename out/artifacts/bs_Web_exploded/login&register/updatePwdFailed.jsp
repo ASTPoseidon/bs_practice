@@ -11,6 +11,6 @@
     <title>修改用户信息失败</title>
 </head>
 <body>
-    抱歉，不存在用户名为<%=session.getAttribute("name")%>的用户，请检查用户名后<a href="updatePwd.jsp">重试</a>！
+抱歉，不存在用户名为<%=session.getAttribute("name")%>的用户，请检查用户名后<a href="updatePwd.jsp">重试</a>！
 </body>
 </html>

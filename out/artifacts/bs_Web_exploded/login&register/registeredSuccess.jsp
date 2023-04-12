@@ -11,6 +11,6 @@
     <title>注册成功</title>
 </head>
 <body>
-    尊敬的<%=session.getAttribute("name")%>，您已注册的成功，请前去<a href="login.jsp">登录</a> ！
+尊敬的<%=session.getAttribute("name")%>，您已注册的成功，请前去<a href="login.jsp">登录</a> ！
 </body>
 </html>

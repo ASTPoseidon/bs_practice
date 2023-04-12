@@ -11,6 +11,6 @@
     <title>修改用户信息成功</title>
 </head>
 <body>
-  尊敬的<%=session.getAttribute("userName")%>,您的信息已修改成功，<a href="login.jsp">点此登录</a>
+尊敬的<%=session.getAttribute("userName")%>,您的信息已修改成功，<a href="login.jsp">点此登录</a>
 </body>
 </html>

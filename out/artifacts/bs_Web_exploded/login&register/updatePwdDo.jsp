@@ -13,32 +13,29 @@
     <title>Title</title>
 </head>
 <body>
-  <%
+<%
     String name = request.getParameter("name");
     String pwd = request.getParameter("password");
 
     Class.forName("com.mysql.jdbc.Driver");
-    String url="jdbc:mysql://localhost:3306/bs_login";
-    String user="root";
-    String password="guo2086443";
-    Connection con= DriverManager.getConnection(url,user,password);
+    String url = "jdbc:mysql://localhost:3306/bs_login";
+    String user = "root";
+    String password = "guo2086443";
+    Connection con = DriverManager.getConnection(url, user, password);
 
-    String sql="update login set Password = ? where userName = ?";
-    PreparedStatement pstmt=con.prepareStatement(sql);
-    pstmt.setString(1,pwd);
-    pstmt.setString(2,name);
-    int flag=pstmt.executeUpdate();
+    String sql = "update login set Password = ? where userName = ?";
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt.setString(1, pwd);
+    pstmt.setString(2, name);
+    int flag = pstmt.executeUpdate();
 
-    if(flag==1)
-    {
-      session.setAttribute("name",name);
-      response.sendRedirect("updatePwdSuccess.jsp");
+    if (flag == 1) {
+        session.setAttribute("name", name);
+        response.sendRedirect("updatePwdSuccess.jsp");
+    } else {
+        session.setAttribute("name", name);
+        response.sendRedirect("updatePwdFailed.jsp");
     }
-    else
-    {
-      session.setAttribute("name",name);
-      response.sendRedirect("updatePwdFailed.jsp");
-    }
-  %>
+%>
 </body>
 </html>
